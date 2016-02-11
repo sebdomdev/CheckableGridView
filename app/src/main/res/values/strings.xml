@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">CheckableGridView</string>
+    <string name="menu_check">Check cell [2, 3]</string>
+    <string name="menu_uncheck">Uncheck cell [2, 3]</string>
+    <string name="menu_disable">Disable cell [4, 2]</string>
+    <string name="menu_enable">Enable all cells</string>
+    <string name="menu_icons">Set new icons</string>
+    <string name="menu_single_selection_column_on">Check only 1 in column 2</string>
+    <string name="menu_single_selection_column_off">Check multiple in column 2</string>
+    <string name="menu_single_selection_row_on">Check only 1 in row 2</string>
+    <string name="menu_single_selection_row_off">Check multiple in row 2</string>
+</resources>

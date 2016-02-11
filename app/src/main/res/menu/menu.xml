@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+    <item android:id="@+id/action_check" android:title="@string/menu_check"
+        android:orderInCategory="1" app:showAsAction="never" />
+    <item android:id="@+id/action_uncheck" android:title="@string/menu_uncheck"
+        android:orderInCategory="2" app:showAsAction="never" />
+    <item android:id="@+id/action_disable" android:title="@string/menu_disable"
+        android:orderInCategory="3" app:showAsAction="never" />
+    <item android:id="@+id/action_enable" android:title="@string/menu_enable"
+        android:orderInCategory="4" app:showAsAction="never" />
+    <item android:id="@+id/action_icons" android:title="@string/menu_icons"
+        android:orderInCategory="5" app:showAsAction="never" />
+    <item android:id="@+id/action_single_selection_column_on" android:title="@string/menu_single_selection_column_on"
+        android:orderInCategory="6" app:showAsAction="never" />
+    <item android:id="@+id/action_single_selection_column_off" android:title="@string/menu_single_selection_column_off"
+        android:orderInCategory="7" app:showAsAction="never" />
+    <item android:id="@+id/action_single_selection_row_on" android:title="@string/menu_single_selection_row_on"
+        android:orderInCategory="8" app:showAsAction="never" />
+    <item android:id="@+id/action_single_selection_row_off" android:title="@string/menu_single_selection_row_off"
+        android:orderInCategory="9" app:showAsAction="never" />
+
+</menu>
