@@ -1,24 +1,33 @@
 # CheckableGridView
-## Synopsis
 
 A view that displays checkboxes in a grid with column and row titles.
 
 ## Screenshots
 
-![alt tag](https://cloud.githubusercontent.com/assets/12089383/12958423/79446846-cfe6-11e5-8a53-8220b24bc004.png)
-![alt tag](https://cloud.githubusercontent.com/assets/12089383/12958424/79460e80-cfe6-11e5-9f50-f3775e0843ac.png)
-[![ScreenShot](https://cloud.githubusercontent.com/assets/12089383/12958425/7946c2a8-cfe6-11e5-8639-8dce816d8e1e.png)](https://youtu.be/AGe-LnhXk-g)
+![alt tag](https://cloud.githubusercontent.com/assets/12089383/12970453/e2a35326-d043-11e5-8b1b-5b6659f6ed83.png)
+![alt tag](https://cloud.githubusercontent.com/assets/12089383/12970454/e2bb070a-d043-11e5-8a13-8e56185ed9fd.png)
+[![ScreenShot](https://cloud.githubusercontent.com/assets/12089383/12970455/e2be30ba-d043-11e5-9cbb-d3e52832ef1c.png)](https://youtu.be/AGe-LnhXk-g)
 
 ## Code Example
 
+In your layout xml file:
+```xml
+<de.mxapplications.checkablegridview.CheckableGridView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/checkablegridview" />
+```
+
+In your Activity/Fragment:
 ```java
-new OpenFileDialog(context).setOnCloseListener(new OpenFileDialog.OnCloseListener(){
-         public void onCancel(){}
-         public void onOk(selectedFile){
-            Log.i(TAG, "selected file=" + selectedFile);
-         }
-   })
-   .show();
+CheckableGridView checkableGridView = (CheckableGridView)findViewById(R.id.checkablegridview);
+checkableGridView.setData(new String[]{"Row 1", "Row 2"}, new String[]{"Col 1", "Col 2"});
+checkableGridView.setOnCheckChangedListener(new CheckableGridView.OnCheckChangedListener() {
+            @Override
+            public void onChecked(int row, int column, boolean checked) {
+                Toast.makeText(MyActivity.this, "Cell in row " + (row + 1) + " and column " + (column + 1) + (checked ? " selected" : " unselected"), Toast.LENGTH_SHORT).show();
+            }
+        });
  ```
 
 ## Installation
@@ -26,36 +35,36 @@ new OpenFileDialog(context).setOnCloseListener(new OpenFileDialog.OnCloseListene
 ###1. Gracle dependency (JCenter)
 Add the following to your build.gradle:
 ```gradle
-compile 'com.github.sebdomdev:open-file-dialog:1.0.1'
+compile 'com.github.sebdomdev:checkable-grid-view:1.0'
 ```
 ###2. Maven dependency (JCenter)
 Add the following to your pom.xml:
 ```maven
-<dependency> <groupId>com.github.sebdomdev</groupId> <artifactId>open-file-dialog</artifactId> <version>1.0.1</version> <type>pom</type> </dependency>
+<dependency> <groupId>com.github.sebdomdev</groupId> <artifactId>checkable-grid-view</artifactId> <version>1.0</version> <type>pom</type> </dependency>
 ```
-###Don't forget
-Your app needs the according permissions to acces the phones memory or an sd card. See [Using External Storage] (http://developer.android.com/guide/topics/data/data-storage.html#filesExternal) and [Requesting Permissions at Runtime](http://developer.android.com/training/permissions/requesting.html) or the [implementation in the example app](https://github.com/sebdomdev/OpenFileDialog/blob/master/app/src/main/java/de/mxapplications/openfiledialogexample/OpenFileDialogActivity.java) (line 63ff).
 
 ## Optional Settings
 
 ```java
-OpenFileDialog openFileDialog = new OpenFileDialog(context);
-openFileDialog
-   //Set the icon that indicates a file in the dialog's list of entries in form of a Resource id.
-   .setFileIcon(R.drawable.my_file_icon)
-   //Set the icon that indicates a folder in the dialog's list of entries in form of a Resource id.
-   .setFolderIcon(R.drawable.my_folder_icon)
-   //Set the icon that indicates the up-navigation (i.e. one hierarchy up in the folder-hierarchy) in the dialog's list of entries in form of a Resource id.
-   .setFolderUpIcon(R.drawable.my_up_icon)
-   //Set if folders can be selected. If the argument is true, folders can be selected instead of files in the dialog.
-   .setFolderSelectable(true)
-   //Set the text color used for selected files. This should be a color value not a resource id.
-   .setFileSelectedColor(R.color.my_file_selected_color)
-   //Set the background color used for selected files. This should be a color value not a resource id.
-   .setFileSelectedBackgroundColor(R.color.my_file_selected_background_color)
-   //Set the text that will be displayed as the title of the dialog.
-   .setTitle("Select a file")
-   .setTitle(R.string.openfiledialog_title)
+CheckableGridView checkableGridView = (CheckableGridView)findViewById(R.id.checkablegridview);
+//Set the checkbox in row 2, column 3 as checked.
+checkableGridView.selectItem(1, 2, true);
+//Set the checkbox in row 2, column 3 as unchecked.
+checkableGridView.selectItem(1, 2, false);
+//Set a cell (containing the checkbox) in the grid view that cannot be selected by the user.
+checkableGridView.setDisabledCell(3, 1);
+//Clear all disabled cells, so that all checkboxes can be selected again.
+checkableGridView.clearDisabledCells();
+//Set your own icons for a checked/unchecked checkbox.
+checkableGridView.setIcons(ContextCompat.getDrawable(this, R.drawable.my_checked_drawable), ContextCompat.getDrawable(this, R.drawable.my_unchecked_drawable));
+//Set a column in which only one checkbox at a time can be checked.
+checkableGridView.setSingleSelectionColumn(1, true);
+//Set a column in which all checkboxes can be checked.
+checkableGridView.setSingleSelectionColumn(1, false);
+//Set a row in which only one checkbox at a time can be checked.
+checkableGridView.setSingleSelectionRow(1, true);
+//Set a row in which all checkboxes can be checked.
+checkableGridView.setSingleSelectionRow(1, false);
 ```
 
 ## MIT License
