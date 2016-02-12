@@ -32,7 +32,7 @@ checkableGridView.setOnCheckChangedListener(new CheckableGridView.OnCheckChanged
 
 ## Installation
 
-###1. Gracle dependency (JCenter)
+###1. Gradle dependency (JCenter)
 Add the following to your build.gradle:
 ```gradle
 compile 'com.github.sebdomdev:checkable-grid-view:1.0'
